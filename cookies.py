@@ -12,13 +12,19 @@ def run(playwright: Playwright) -> None:
     if COOKIES:
        context.add_cookies(COOKIES)
 
-    page.goto("https://www.qianlima.com")
+    page.goto("https://www.qianlima.com/bid-487957422.html")
+    # page.goto("file:///C:/Users/20368/Desktop/Browser%20&%20Crawler%20Config%20-%20Crawl4AI%20Documentation%20(v0.4.3bx).html")
 
     os.system("pause")
     #判断登录成功后获取cookies
+
+    with open("output.html", "w", encoding="utf-8") as f:
+        f.write(page.content())
+
     cookies = context.cookies()
 
     print("cookies: ", cookies)
+
     # Close page
     page.close()
 

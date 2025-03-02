@@ -1,6 +1,6 @@
 import csv
 
-from models.project import Project
+from models.project import CSV_HEAD
 
 
 def is_duplicate_project(project_name: str, seen_names: set) -> bool:
@@ -13,14 +13,11 @@ def is_complete_project(project: dict, required_keys: list) -> bool:
 
 def save_projects_to_csv(projects: list, filename: str):
     if not projects:
-        print("No venues to save.")
+        print("No project to save.")
         return
 
-    # Use field names from the Venue model
-    fieldnames = Project.model_fields.keys()
-
     with open(filename, mode="w", newline="", encoding="utf-8") as file:
-        writer = csv.DictWriter(file, fieldnames=fieldnames)
+        writer = csv.DictWriter(file, fieldnames=CSV_HEAD)
         writer.writeheader()
         writer.writerows(projects)
     print(f"Saved {len(projects)} venues to '{filename}'.")

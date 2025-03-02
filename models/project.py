@@ -1,12 +1,27 @@
 from pydantic import BaseModel
 
-class Project(BaseModel):
-    name: str
-    price: str
-    bidding_time: str
-    winning_time: str
-    scrapping_time: str
-    description: str
+class Project_base(BaseModel):
+    Location: str
+    Title: str
+    No: str
+    Company: str
+    Price: str
+
+class Project_adv(BaseModel):
+    Brand: str
+    Model: str
+    Winning_time: str
+
+CSV_HEAD = [
+    "Location",
+    "Title",
+    "No",
+    "Company",
+    "Price",
+    "Brand",
+    "Model",
+    "Winning_time"
+]
 
 '''
 SCHEMA = {
